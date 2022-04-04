@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { default: axios } = require('axios');
+const generateRandomString = require('./helpers/generateRandomString');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 
@@ -11,17 +12,6 @@ const REDIRECT_URI = process.env.REDIRECT_URI;
 const FRONTEND_URI = process.env.FRONTEND_URI;
 
 const STATE_KEY = 'spotify_auth_state';
-
-const generateRandomString = (length) => {
-  let randomString = '';
-  const possibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  for (let i = 0; i < length; i++) {
-    randomString += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
-  }
-
-  return randomString;
-}
 
 app.use(cookieParser());
 
