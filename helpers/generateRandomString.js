@@ -1,4 +1,4 @@
-export default generateRandomString = (length) => {
+const generateRandomString = (length) => {
   let randomString = '';
   const possibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -8,3 +8,5 @@ export default generateRandomString = (length) => {
 
   return randomString;
 }
+
+module.exports = generateRandomString;
