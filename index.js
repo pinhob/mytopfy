@@ -93,4 +93,4 @@ app.get('/callback', async (req, res) => {
   }
 });
 
-app.listen(8888, () => console.log(`Server started on ${PORT}`));
+app.listen(PORT, () => console.log(`Server started on ${PORT}`));
