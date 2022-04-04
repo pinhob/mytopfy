@@ -1,5 +1,6 @@
 import axios from "axios";
 import { LOCALSTORAGE_KEYS, LOCALSTORAGE_VALUES } from "./localStorageKeysValues";
+import { logout } from "./logout";
 
 /**
  * Checks if the amount of time that has elapsed between the timestamp in localStorage
@@ -30,6 +31,7 @@ const refreshToken = async () => {
       || LOCALSTORAGE_VALUES.refreshToken === 'undefined'
       || tokenTimeExpired) {
       console.log('No refresh token avaliable');
+      logout();
     }
 
     const { data } = await axios.get(`/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`);
