@@ -1,7 +1,11 @@
 import axios from "axios";
 import { LOCALSTORAGE_KEYS, LOCALSTORAGE_VALUES } from "./localStorageKeysValues";
 
-
+/**
+ * Checks if the amount of time that has elapsed between the timestamp in localStorage
+ * and now is greater than the expiration time of 3600 seconds (1 hour).
+ * @returns {boolean} Whether or not the access token in localStorage has expired
+ */
 const hasTokenExpired = () => {
   const { accessToken, timestamp, expireTime } = LOCALSTORAGE_VALUES;
 
@@ -13,6 +17,11 @@ const hasTokenExpired = () => {
   return (millisecondsSinceTokenCreated / 1000) > Number(expireTime);
 }
 
+/**
+ * Use the refresh token in localStorage to hit the /refresh_token endpoint
+ * in Node app, then update values in localStorage with data from response.
+ * @returns {void}
+ */
 const refreshToken = async () => {
   try {
     const tokenTimeExpired = (Date.now() - Number(LOCALSTORAGE_VALUES.timestamp) / 1000) < 1000;
@@ -34,6 +43,11 @@ const refreshToken = async () => {
   }
 };
 
+/**
+ * Handles logic for retrieving the Spotify access token from localStorage
+ * or URL query params
+ * @returns {string} A Spotify access token
+ */
 const getAccessToken = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
