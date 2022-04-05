@@ -1,6 +1,5 @@
 import axios from "axios";
-import { LOCALSTORAGE_KEYS, LOCALSTORAGE_VALUES } from "./localStorageKeysValues";
-import { logout } from "./logout";
+import { LOCALSTORAGE_KEYS, LOCALSTORAGE_VALUES, logout } from "../helpers";
 
 /**
  * Checks if the amount of time that has elapsed between the timestamp in localStorage

@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { accessToken } from './helpers/handleTokens';
+import { accessToken } from './api';
 
 function App() {
   const [token, getToken] = useState(null);
