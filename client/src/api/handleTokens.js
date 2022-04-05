@@ -36,7 +36,7 @@ const refreshToken = async () => {
     const { data } = await axios.get(`/refresh_token?refresh_token=${LOCALSTORAGE_VALUES.refreshToken}`);
 
     window.localStorage.setItem(LOCALSTORAGE_KEYS.accessToken, data.access_token);
-    window.localStorage.setItem(LOCALSTORAGE_VALUES.timestamp, Date.now());
+    window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
 
     window.location.reload();
   } catch (error) {
@@ -55,7 +55,7 @@ const getAccessToken = () => {
   const queryParams = {
     [LOCALSTORAGE_KEYS.accessToken]: urlParams.get('access_token'),
     [LOCALSTORAGE_KEYS.refreshToken]: urlParams.get('refresh_token'),
-    [LOCALSTORAGE_KEYS.expiresIn]: urlParams.get('expires_in'),
+    [LOCALSTORAGE_KEYS.expiresTime]: urlParams.get('expires_in'),
   }
 
 

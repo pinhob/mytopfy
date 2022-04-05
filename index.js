@@ -3,6 +3,7 @@ const { default: axios } = require('axios');
 const generateRandomString = require('./helpers/generateRandomString');
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 8888;
@@ -14,6 +15,7 @@ const FRONTEND_URI = process.env.FRONTEND_URI;
 const STATE_KEY = 'spotify_auth_state';
 
 app.use(cookieParser());
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -26,6 +28,7 @@ app.get('/login', (_req, res) => {
   let scope = [
     'user-read-private',
     'user-read-email',
+    'user-top-read',
   ].join(' ')
 
   const queryParams = new URLSearchParams({

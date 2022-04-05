@@ -1,6 +1,8 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { accessToken } from './api';
+import Profile from './pages';
+
 
 function App() {
   const [token, getToken] = useState(null);
@@ -16,7 +18,7 @@ function App() {
       <header className="App-header">
         {
           token
-            ? <p>Logged in</p>
+            ? <Profile />
             : <a
               className="App-link"
               href="http://localhost:8888/login"
