@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { getUserTopTracks } from "../api";
-import { TopTracksList } from "../components";
+import { TimeRangeButtons, TopTracksList } from "../components";
 
 export const TopTracks = () => {
   const [tracks, setTracks] = useState([]);
+  const [activeRange, setActiveRange] = useState('short');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await getUserTopTracks();
+        const { data } = await getUserTopTracks(`${activeRange}_term`);
 
         setTracks(data.items);
       } catch (error) {
@@ -17,10 +18,11 @@ export const TopTracks = () => {
     }
 
     fetchData();
-  }, [])
+  }, [activeRange]);
 
   return (
     <main>
+      <TimeRangeButtons activeRange={activeRange} setActiveRange={setActiveRange} />
       <h1>Top Tracks</h1>
       {tracks && tracks.length > 0 && <TopTracksList tracks={tracks} />}
     </main>
