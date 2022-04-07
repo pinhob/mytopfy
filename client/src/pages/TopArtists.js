@@ -22,8 +22,8 @@ export const TopArtists = () => {
   return (
     <main>
       <TimeRangeButtons activeRange={activeRange} setActiveRange={setActiveRange} />
-      <h1>Top Artists</h1>
-      {artists && artists.length > 0 && <TopArtistsList artists={artists} />}
+      <h1>Top Artistas</h1>
+      {artists && artists.length > 0 ? <TopArtistsList artists={artists} /> : <p>Carregando...</p>}
     </main>
   )
 };

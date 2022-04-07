@@ -23,8 +23,8 @@ export const TopTracks = () => {
   return (
     <main>
       <TimeRangeButtons activeRange={activeRange} setActiveRange={setActiveRange} />
-      <h1>Top Tracks</h1>
-      {tracks && tracks.length > 0 && <TopTracksList tracks={tracks} />}
+      <h1>Top Músicas</h1>
+      {tracks && tracks.length > 0 ? <TopTracksList tracks={tracks} /> : <p>Carregando...</p>}
     </main>
   )
 };
